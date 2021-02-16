@@ -27,6 +27,7 @@ jobs:
       run: source ubuntu-end.sh
 
     - name: Delete workflow runs
+      continue-on-error: true
       uses: GitRML/delete-workflow-runs@main
       with:
         retain_days: 1
