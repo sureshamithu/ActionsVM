@@ -21,6 +21,7 @@ jobs:
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        SCKEY: ${{ secrets.SCKEY }}
 
     - name: Run End Script
       run: source ubuntu-end.sh
