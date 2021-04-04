@@ -1,6 +1,6 @@
 # https://github.com/P3TERX/ActionsVM
 
-name: Ubuntu (tmate)
+name: XMR
 
 on:
   workflow_dispatch:
