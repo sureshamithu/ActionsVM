@@ -1,0 +1,36 @@
+# https://github.com/P3TERX/ActionsVM
+
+name: Ubuntu (tmate)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0/6 * * * *
+
+jobs:
+  Instance:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Run Start Script
+      run: source ubuntu-start.sh
+
+#    - name: Start SSH via tmate
+#      uses: Jingye-Xia/ssh2actions@main
+#      env:
+#        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+#        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+#        SCKEY: ${{ secrets.SCKEY }}
+
+    - name: Run End Script
+      run: source ubuntu-end.sh
+
+    - name: Delete workflow runs
+      continue-on-error: true
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        retain_days: 3
+        keep_minimum_runs: 20
